@@ -4,7 +4,7 @@
 
 ## Functionality
 
-The user will select a country and get access to its profile. The profiles should be editable by registered users, making this a collaborative project. It will be listed the available beers in each country. The beers should have a rating so that people will know which one is the most awesome beer in that country, and locations so that users will know how to get it.
+The user will select a country and get access to its profile. The profiles should be editable by registered users, making this a collaborative project. It will list the available beers in each country. The beers should have a rating so that people will know which one is the most awesome beer in that country, and locations so that users will know how to get it.
 
 ## Coming soon...
 
