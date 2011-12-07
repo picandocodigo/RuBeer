@@ -4,6 +4,8 @@
   <tr>
     <th>Address</th>
     <th>Rate</th>
+    <th>Latitude</th>
+    <th>Longitude</th>
     <th></th>
     <th></th>
     <th></th>
@@ -13,6 +15,8 @@
   <tr>
     <td><%= place.address %></td>
     <td><%= place.rate %></td>
+    <td><%= place.latitude %></td>
+    <td><%= place.longitude %></td>
     <td><%= link_to 'Show', place %></td>
     <td><%= link_to 'Edit', edit_place_path(place) %></td>
     <td><%= link_to 'Destroy', place, confirm: 'Are you sure?', method: :delete %></td>

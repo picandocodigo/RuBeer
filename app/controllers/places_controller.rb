@@ -41,16 +41,9 @@ class PlacesController < ApplicationController
   # POST /places.json
   def create
     @place = Place.new(params[:place])
-
-    respond_to do |format|
-      if @place.save
-        format.html { redirect_to @place, notice: 'Place was successfully created.' }
-        format.json { render json: @place, status: :created, location: @place }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @place.errors, status: :unprocessable_entity }
-      end
-    end
+    @place.save
+    
+    redirect_to :controller => "maps", :action => "index"
   end
 
   # PUT /places/1

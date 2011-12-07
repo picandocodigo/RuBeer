@@ -8,14 +8,27 @@
 
   
 <body>
+    
     <form action="/places/" method="POST">
         <label>Place Address: </label><input id="address" name="place[address]" type="text"/>
         <label>Beer Rate:</label><input id="rate" name="place[rate]" type="text"/>
+        <input id="latitude" name="place[latitude]" type="hidden"/>
+        <input id="longitude" name="place[longitude]" type="hidden"/>
         <input type="submit" value="Share!"/>
     </form>
     
     <div id="map_canvas"></div><br/>
     
-    <input id="latitude" type="hidden"/><br/>
-    <input id="longitude" type="hidden"/>
+    <script type="text/javascript">
+        function fill_map()
+        {   
+            <% @places.each do |place| %>
+                var location = new google.maps.LatLng(<%= place.latitude %>, <%= place.longitude %>);
+                var marker = new_marker();
+                marker.setPosition(location);
+                marker.setTitle("The beer rate here is: <%= place.rate %>");
+            <% end %>    
+        }
+    </script>
+    
 </body>
