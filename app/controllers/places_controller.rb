@@ -41,7 +41,10 @@ class PlacesController < ApplicationController
   # POST /places.json
   def create
     @place = Place.new(params[:place])
-    @place.save
+    
+    if @place.latitude and @place.longitude 
+        @place.save
+    end
     
     redirect_to :controller => "maps", :action => "index"
   end
