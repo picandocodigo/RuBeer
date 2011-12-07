@@ -5,3 +5,9 @@
     list-style-type: none;
     padding-left: 0px;
 }
+
+#map_canvas
+{
+    width: 800px; 
+    height: 600px;
+}
