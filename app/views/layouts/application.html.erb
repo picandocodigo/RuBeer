@@ -1,16 +1,51 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-  <title>RuBeer</title>
-  <%= stylesheet_link_tag    "application" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-  <%= yield :heads %>
+    <link rel="stylesheet" href="/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/default.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <title>RuBeer</title>
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+    <%= yield :heads %>
 </head>
 <body>
+    
+    <div class="container">
+		
+		<div class="span-24 last" style="height: 40px;">                        
+		</div>				
+						
+		<div class="topbar">
+		    <div class="fill">
+			<div class="container">
+			    <a class="brand" href="/">Rubeer</a>			      
+			      <ul class="nav">             
+				    <li class="active"><a href="/maps">Maps</a></li>
+				    <li>
+					<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>								
+					<g:plusone></g:plusone>
+				    </li>
+			      </ul>                              
+			</div>
+		    </div>
+		</div>
+        
+        <div id="content" class="content">
+			
+            <%= yield %>
+									
+	    </div>
 
-<%= yield %>
+	    <footer>
+		    <div style="text-align: center">&copy; Rubeer 2011</div>
+	    </footer>
+	    <br/>
+
+	</div>
 
 </body>
 </html>

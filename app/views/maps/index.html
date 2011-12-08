@@ -6,16 +6,47 @@
     <link href="/css/maps.css" media="screen" rel="stylesheet" type="text/css">
 <% end %>
 
-  
-<body>
     
-    <form action="/places/" method="POST">
-        <label>Place Address: </label><input id="address" name="place[address]" type="text"/>
-        <label>Beer Rate:</label><input id="rate" name="place[rate]" type="text"/>
-        <input id="latitude" name="place[latitude]" type="hidden"/>
-        <input id="longitude" name="place[longitude]" type="hidden"/>
-        <input type="submit" value="Share!"/>
-    </form>
+
+    <%= form_for @place, :remote => true, :url => { :action => 'create' }, :html => { :multipart => true, :target => "results" }  do |f| %>
+    <table>
+        
+        <% if @place.errors.any? %>
+            <tr>
+                <td>
+                    <div id="results"></div>
+                </td>
+            </tr>
+        <% end %>
+            
+        <tr>
+            <td>
+                <%= f.label "place address" %>
+            </td>
+            <td>
+                <%= f.text_field :address, :id => :address %>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <%= f.label "Beer rate" %>
+            </td>
+            <td>
+                <%= f.number_field :rate %>
+                <%= f.hidden_field :latitude %>    
+                <%= f.hidden_field :longitude %>            
+            </td>        
+        </tr>
+        <tr>
+            <td>
+            </td>
+            <td>
+                <%= f.submit :Share! %>
+            </td>
+        </tr>
+        
+    </table>
+    <% end %>
     
     <div id="map_canvas"></div><br/>
     
