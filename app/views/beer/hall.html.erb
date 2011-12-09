@@ -3,14 +3,14 @@
 
 <table>
   <tr>
-    <th>User</th>
-    <th></th>
+    <th>Name</th>
+    <th>Email</th>
   </tr>
 
 <% @users.each do |user| %>
   <tr>
+    <td><%= user.user_name %></td>
     <td><%= user.email %></td>
-    <td><%= user.name %></td>
   </tr>
 <% end %>
 </table>
