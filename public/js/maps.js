@@ -18,8 +18,11 @@ function initialize()
     fill_map();
 }
 
-function set_marker(location, address, rate)
+function set_marker(location, address, rate, centered)
 {
+    if (!rate) var rate = 0;
+    if (!centered) var centered = false;
+    
      var marker =  new google.maps.Marker({
          map: map,
          draggable: true,
@@ -27,11 +30,15 @@ function set_marker(location, address, rate)
      });
 
      google.maps.event.addListener(marker, 'click', function() {
-           new google.maps.InfoWindow({
-             content: "<p><b>Address: </b>" + address + "<br/>" +
-                      "<b>Beer Rate: </b>" + rate + "</p>",
-           }).open(map, marker);
+           var window = new google.maps.InfoWindow({
+                content: "<p><b>Address: </b>" + address + "<br/>" +
+                         "<b>Beer Rate: </b>" + rate + "</p>",
+           });
+           window.open(map, marker);
      });
+     
+     if (centered)
+        map.setCenter(location);
 
      return marker;
 }
@@ -61,12 +68,12 @@ $(document).ready(function() {
             },
 
             select: function(event, ui) {
-
+                
+                var address = $("#address").val();
                 $("#latitude").val(ui.item.latitude);
                 $("#longitude").val(ui.item.longitude);
                 var location = new google.maps.LatLng(ui.item.latitude, ui.item.longitude);
-                marker.setPosition(location);
-                map.setCenter(location);
+                set_marker(location, address, 0, true);              
             }
         });
     });

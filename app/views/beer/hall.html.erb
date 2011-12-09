@@ -1,0 +1,16 @@
+<h2>Hall of Fame</h2>
+<br/>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+  </tr>
+
+<% @users.each do |user| %>
+  <tr>
+    <td><%= user.user_name %></td>
+    <td><%= user.email %></td>
+  </tr>
+<% end %>
+</table>
