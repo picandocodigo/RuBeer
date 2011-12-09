@@ -50,23 +50,22 @@
 
     <script type="text/javascript">
         function fill_map()
-        {
-            var l = [];
+        {    
+            var locations = [
             <% @places.each do |place| %>
-            l.push({
+            {
                 latitude: <%= place.latitude %>,
                 longitude: <%= place.longitude %>,
                 address: "<%= place.address %>",
                 rate: <%= place.rate %>
-            });
+            },
             <% end %>
+            ];
 
-            for (var loc in l)
+            for (var loc in locations)
             {
-                var point = new google.maps.LatLng(l[loc].latitude, l[loc].longitude);
-                set_marker(point, l[loc].address, l[loc].rate);
+                var point = new google.maps.LatLng(locations[loc].latitude, locations[loc].longitude);
+                set_marker(point, locations[loc].address, locations[loc].rate);
             }
         }
     </script>
-
-</body>
