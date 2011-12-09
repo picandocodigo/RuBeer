@@ -19,10 +19,12 @@ class MapsController < ApplicationController
         respond_to do |format|
 
             if @place.save
+                flash[:notice] = "Successfully Shared!" 
                 format.html { redirect_to(:controller => "maps", :action => "index") }
                 format.xml  { render :xml => @place, :status => :created, :location => @place }
             else
-                format.html { render :text => "fail" }
+                flash[:alert] = "ups... Error when sharing. Check your input please." 
+                format.html { redirect_to(:controller => "maps", :action => "index") }  
                 format.xml  { render :xml => @place.errors, :status => :unprocessable_entity }
             end
 

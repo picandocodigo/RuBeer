@@ -24,9 +24,9 @@
             <div class="container">
                 <a class="brand" href="/">Rubeer</a>
                   <ul class="nav">
-                    <li class="active"><%= link_to "Beer World", :controller => :maps, :action => :index  %></li>
+                    <li class="active"><a href="/maps">Beer World</a></li>
                     <% if user_signed_in? %>                          
-                        <li class="active"><%= link_to "Hall of Fame", :controller => :users, :action => :index  %></li>
+                        <li class="active"><a href="/beer/hall">Hall of Fame</a></li>
                         <li class="active"><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
                     <% else %> 
                         <li class="active"><%= link_to "Sign up", new_user_registration_path %></li>
@@ -42,7 +42,15 @@
         </div>
 
         <div id="content" class="content">
-
+            
+            <br/>
+            <% if notice %>
+                <p class="notice"><%= notice %></p>                
+            <% end %>
+            <% if alert %>
+                <p class="alert"><%= alert %></p>
+            <% end %>
+            
             <%= yield %>
 
         </div>
